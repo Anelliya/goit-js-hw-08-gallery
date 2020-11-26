@@ -12,24 +12,12 @@ const addNewElement = (arr, listOfElements) => {
   listOfElements.insertAdjacentHTML("afterbegin", newListItem.join(""));
 };
 
-function addIsOpenClass(mutableEl) {
-  mutableEl.classList.add("is-open");
+function togleIsOpenClass(mutableElement) {
+  mutableElement.classList.toggle("is-open");
 }
 
-function removeIsOpenClass(mutableEl) {
-  mutableEl.classList.remove("is-open");
-}
-
-function addSrcAttribute(mutableEl, srcSource) {
-  mutableEl.setAttribute("src", srcSource);
-}
-
-function removeSrcAttribute(mutableEl) {
-  mutableEl.setAttribute("src", "");
-}
-
-function addAltAttribute(mutableEl, altSource) {
-  mutableEl.setAttribute("alt", altSource);
+function changeAttribute(mutableElement, attributeName, source) {
+  mutableEl.setAttribute(attributeName, source);
 }
 
 const openModalWindow = (event) => {
@@ -37,9 +25,9 @@ const openModalWindow = (event) => {
     getAlt = event.target.getAttribute("alt");
 
   if (event.target.nodeName === "IMG") {
-    addIsOpenClass(modalWindowRef);
-    addSrcAttribute(modalImageRef, getDataSource);
-    addAltAttribute(modalImageRef, getAlt);
+    togleIsOpenClass(modalWindowRef);
+    changeAttribute(modalImageRef, "src", getDataSource);
+    changeAttribute(modalImageRef, "alt", getAlt);
   }
 };
 
@@ -49,8 +37,8 @@ const closeModalWindow = (event) => {
     event.target.nodeName === "DIV" ||
     event.key === "Escape"
   ) {
-    removeIsOpenClass(modalWindowRef);
-    removeSrcAttribute(modalImageRef);
+    togleIsOpenClass(modalWindowRef);
+    changeAttribute(modalImageRef, "src", "");
   }
 };
 
