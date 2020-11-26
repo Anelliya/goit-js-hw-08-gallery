@@ -17,7 +17,7 @@ function togleIsOpenClass(mutableElement) {
 }
 
 function changeAttribute(mutableElement, attributeName, source) {
-  mutableEl.setAttribute(attributeName, source);
+  mutableElement.setAttribute(attributeName, source);
 }
 
 const openModalWindow = (event) => {
